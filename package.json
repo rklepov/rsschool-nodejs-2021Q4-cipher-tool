@@ -1,0 +1,20 @@
+{
+    "name": "nodejs-2021q4",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "RS School NodeJS Course. Ciphering CLI Tool.",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool.git"
+    },
+    "author": "Roman Klepov",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool/issues"
+    },
+    "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme"
+}
