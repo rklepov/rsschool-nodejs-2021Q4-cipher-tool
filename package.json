@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool/issues"
     },
-    "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme"
+    "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme",
+    "devDependencies": {
+        "jest": "^27.3.1"
+    }
 }
