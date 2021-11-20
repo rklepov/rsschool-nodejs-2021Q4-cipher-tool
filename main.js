@@ -2,8 +2,8 @@
 
 import { pipeline } from "stream";
 
-import Options from "./options.js";
-import Stream from "./streams.js";
+import Options from "./src/options.js";
+import Stream from "./src/streams.js";
 
 let opts;
 try {
