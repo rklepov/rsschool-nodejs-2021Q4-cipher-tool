@@ -86,7 +86,7 @@ let CypherFactory = {
     create(spec) {
         let Ctor = cyphersSpec[spec[0]];
         if (Ctor) {
-            return new Ctor(spec[1]); // c[1] undefined for "A" but that's fine
+            return new Ctor(spec.slice(1)); // spec[1] undefined for "A" but that's fine
         } else {
             throw new Except.UnknownCypher(spec);
         }

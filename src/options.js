@@ -87,8 +87,8 @@ class Options {
     static printUsage(argv) {
         console.error("Usage:");
         console.error(
-            path.basename(process.argv[0]),
-            path.basename(process.argv[1]),
+            path.basename(argv[0]),
+            path.basename(argv[1]),
             '-c|--config "<config spec>"',
             "[ -i|--input <filename> ]",
             "[ -o|--output <filename> ]"
