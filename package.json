@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme",
     "devDependencies": {
+        "@types/jest": "^27.0.3",
         "jest": "^27.3.1"
     }
 }
