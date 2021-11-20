@@ -16,7 +16,7 @@ class Options {
     #output = null;
 
     constructor(argv) {
-        for (let i = 0; i < argv.length; ++i) {
+        for (let i = 2; i < argv.length; ++i) {
             switch (argv[i]) {
                 case "-c":
                 case "--config":
@@ -79,6 +79,7 @@ class Options {
             throw new Except.MissingOptionValue(missingValues.map((nv) => nv.name));
         }
     }
+
     toString() {
         return `config: ${this.config}, input: ${this.input}, output: ${this.output}`;
     }

@@ -24,7 +24,6 @@ class Cypher {
     }
 
     applyTo(str) {
-        // return Array.prototype.map.call(str, this.constructor.prototype.translate.bind(this)).join("");
         return Array.prototype.map.call(str, this.translate.bind(this)).join("");
     }
 }
