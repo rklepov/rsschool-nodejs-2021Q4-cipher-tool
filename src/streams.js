@@ -118,6 +118,19 @@ class EncodeDecode extends Transform {
         let output = this.#cypher.applyTo(chunk);
         callback(null, output);
     }
+
+    /**
+     * Returns an array of encode-decode transform streams created from the
+     * cyphers config spec (oroginally passed via --config CLI option).
+     *
+     * @param {string} cyphers config spec
+     */
+    static createFromConfig(config) {
+        return config
+            .split("-")
+            .map((s) => s.trim())
+            .map((cypher) => new EncodeDecode(cypher));
+    }
 }
 
 export default { Input, Output, EncodeDecode };

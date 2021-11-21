@@ -19,10 +19,7 @@ try {
 
 try {
     // create the array of encode-decode transform streams from the config specification
-    let encdec = opts.config
-        .split("-")
-        .map((s) => s.trim())
-        .map((cypher) => new Stream.EncodeDecode(cypher));
+    let encdec = Stream.EncodeDecode.createFromConfig(opts.config);
 
     let input = opts.input ? new Stream.Input(opts.input) : process.stdin;
     input.setEncoding("utf8");
