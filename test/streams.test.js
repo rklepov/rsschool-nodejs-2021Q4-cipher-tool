@@ -103,6 +103,16 @@ describe("Redable stream", () => {
         });
     }); // Input errors
 
+    describe("Input file", () => {
+        test("Read from input file", async () => {
+            // reading from the example input file which is shipped with the repository
+            const inputStream = new Stream.Input("data/input.txt");
+            const mockWriteStream = new MockWriteable();
+            await pipeline(inputStream, mockWriteStream);
+            expect(mockWriteStream.buffer.trim()).toBe('This is secret. Message about "_" symbol!');
+        });
+    }); // Input file
+
     // TODO: master jest to be able to mock fs calls to make better coverage of readable file stream
     //       (so far it appears that mock doesn't work due to the clash with ES6 modules)
 }); // Redable stream
