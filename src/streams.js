@@ -58,7 +58,7 @@ class Input extends Readable {
  */
 class Output extends Writable {
     constructor(filename) {
-        super({ defaultEncoding: "utf8" }); // TODO: writes text in fixed encoding only
+        super({ decodeStrings: false, defaultEncoding: "utf8" }); // TODO: writes text in fixed encoding only
         this.filename = filename;
     }
 
