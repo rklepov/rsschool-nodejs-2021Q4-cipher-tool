@@ -12,7 +12,7 @@ try {
     // CLI options format error
     console.error(e.toString());
     console.error();
-    Options.printUsage(process.argv);
+    Options.printUsage(process.argv.slice(0, 2), (...msg) => console.error(...msg));
     console.error();
     process.exit(1);
 }

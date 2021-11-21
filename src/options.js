@@ -84,9 +84,9 @@ class Options {
         return `config: ${this.config}, input: ${this.input}, output: ${this.output}`;
     }
 
-    static printUsage(argv) {
-        console.error("Usage:");
-        console.error(
+    static printUsage(argv, print) {
+        print("Usage:");
+        print(
             path.basename(argv[0]),
             path.basename(argv[1]),
             '-c|--config "<config spec>"',
