@@ -5,8 +5,11 @@
     "description": "RS School NodeJS Course. Ciphering CLI Tool.",
     "main": "main.js",
     "scripts": {
-        "test": "jest",
-        "test:coverage": "jest --coverage"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+        "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+    },
+    "jest": {
+        "verbose": true
     },
     "repository": {
         "type": "git",
