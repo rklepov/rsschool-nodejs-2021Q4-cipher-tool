@@ -64,7 +64,7 @@ class Options {
 
     validate() {
         // --config option needs to be provided
-        if (!this.#config) {
+        if (null === this.#config) {
             throw new Except.MissingOption(["--config"]);
         }
 
