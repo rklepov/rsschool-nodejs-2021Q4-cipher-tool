@@ -1,7 +1,7 @@
 {
     "name": "nodejs-2021q4",
     "type": "module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "RS School NodeJS Course. Ciphering CLI Tool.",
     "main": "main.js",
     "scripts": {
