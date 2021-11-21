@@ -7,7 +7,7 @@ import Stream from "./src/streams.js";
 
 let opts;
 try {
-    opts = new Options(process.argv);
+    opts = new Options(process.argv.slice(2));
 } catch (e) {
     // CLI options format error
     console.error(e.toString());
