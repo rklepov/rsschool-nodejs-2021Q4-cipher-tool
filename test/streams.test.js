@@ -88,4 +88,51 @@ describe("Transform stream", () => {
     });
 });
 
+describe("Redable stream", () => {
+    describe("Input errors", () => {
+        test("Input file doesn't exist", async () => {
+            const inputStream = new Stream.Input("fake_input.txt");
+
+            try {
+                await pipeline(inputStream, new MockWriteable());
+            } catch (e) {
+                expect(e).toBeInstanceOf(Except.InputFileError);
+                expect(e.message).toMatch("ENOENT: no such file or directory");
+                expect(e.message).toMatch("fake_input.txt");
+            }
+        });
+    }); // Input errors
+
+    // TODO: master jest to be able to mock fs calls to make better coverage of readable file stream
+    //       (so far it appears that mock doesn't work due to the clash with ES6 modules)
+}); // Redable stream
+
+describe("Writeable stream", () => {
+    describe("Output errors", () => {
+        test("Output file doesn't exist", async () => {
+            try {
+                await pipeline(new MockReadable(""), new Stream.Output("fake_output.txt"));
+            } catch (e) {
+                expect(e).toBeInstanceOf(Except.OutputFileError);
+                expect(e.message).toMatch("ENOENT: no such file or directory");
+                expect(e.message).toMatch("fake_output.txt");
+            }
+        });
+
+        test("Output is a directory", async () => {
+            try {
+                // assuming we're in the root directory of the app so checking
+                // with the same 'test' directory which should exist
+                await pipeline(new MockReadable("x"), new Stream.Output("test"));
+            } catch (e) {
+                expect(e).toBeInstanceOf(Except.OutputFileError);
+                expect(e.message).toMatch("EISDIR: illegal operation on a directory, write");
+            }
+        });
+    }); // Output errors
+
+    // TODO: master jest to be able to mock fs calls to make better coverage of writable file stream
+    //       (so far it appears that mock doesn't work due to the clash with ES6 modules)
+}); // Writeable stream
+
 //__EOF__
