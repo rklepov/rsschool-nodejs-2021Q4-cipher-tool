@@ -40,5 +40,3 @@ function main(argv) {
 export default main;
 
 //__EOF__
-
-//__EOF__
