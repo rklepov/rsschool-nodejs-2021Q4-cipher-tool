@@ -88,7 +88,7 @@ describe("Transform stream", () => {
     });
 });
 
-describe("Redable stream", () => {
+describe("Readable stream", () => {
     describe("Input errors", () => {
         test("Input file doesn't exist", async () => {
             const inputStream = new Stream.Input("fake_input.txt");
@@ -115,7 +115,7 @@ describe("Redable stream", () => {
 
     // TODO: master jest to be able to mock fs calls to make better coverage of readable file stream
     //       (so far it appears that mock doesn't work due to the clash with ES6 modules)
-}); // Redable stream
+}); // Readable stream
 
 describe("Writeable stream", () => {
     describe("Output errors", () => {
@@ -136,7 +136,7 @@ describe("Writeable stream", () => {
                 await pipeline(new MockReadable("x"), new Stream.Output("test"));
             } catch (e) {
                 expect(e).toBeInstanceOf(Except.OutputFileError);
-                expect(e.message).toMatch("EISDIR: illegal operation on a directory, write");
+                expect(e.message).toMatch("EISDIR: illegal operation on a directory");
             }
         });
     }); // Output errors
