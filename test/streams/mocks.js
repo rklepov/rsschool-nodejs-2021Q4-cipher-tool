@@ -34,7 +34,7 @@ class MockReadable extends Readable {
         callback();
     }
 
-    _read(n) {
+    _read(/* n */) {
         this.push(this.text);
         this.push(null);
     }
