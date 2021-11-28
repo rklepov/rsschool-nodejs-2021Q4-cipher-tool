@@ -58,7 +58,7 @@ class Input extends Readable {
  */
 class Output extends Writable {
     constructor(filename) {
-        super({ defaultEncoding: "utf8" }); // TODO: writes text in fixed encoding only
+        super({ decodeStrings: false, defaultEncoding: "utf8" }); // TODO: writes text in fixed encoding only
         this.filename = filename;
     }
 
@@ -117,6 +117,19 @@ class EncodeDecode extends Transform {
     _transform(chunk, encoding, callback) {
         let output = this.#cypher.applyTo(chunk);
         callback(null, output);
+    }
+
+    /**
+     * Returns an array of encode-decode transform streams created from the
+     * cyphers config spec (oroginally passed via --config CLI option).
+     *
+     * @param {string} cyphers config spec
+     */
+    static createFromConfig(config) {
+        return config
+            .split("-")
+            .map((s) => s.trim())
+            .map((cypher) => new EncodeDecode(cypher));
     }
 }
 

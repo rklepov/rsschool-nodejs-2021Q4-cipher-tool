@@ -2,8 +2,8 @@
 
 import { pipeline } from "stream";
 
-import Options from "./options.js";
-import Stream from "./streams.js";
+import Options from "./src/options.js";
+import Stream from "./src/streams.js";
 
 let opts;
 try {
@@ -12,17 +12,14 @@ try {
     // CLI options format error
     console.error(e.toString());
     console.error();
-    Options.printUsage([...process.argv]);
+    Options.printUsage(process.argv.slice(0, 2), (...msg) => console.error(...msg));
     console.error();
     process.exit(1);
 }
 
 try {
     // create the array of encode-decode transform streams from the config specification
-    let encdec = opts.config
-        .split("-")
-        .map((s) => s.trim())
-        .map((cypher) => new Stream.EncodeDecode(cypher));
+    let encdec = Stream.EncodeDecode.createFromConfig(opts.config);
 
     let input = opts.input ? new Stream.Input(opts.input) : process.stdin;
     input.setEncoding("utf8");

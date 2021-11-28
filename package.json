@@ -1,11 +1,12 @@
 {
     "name": "nodejs-2021q4",
     "type": "module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "RS School NodeJS Course. Ciphering CLI Tool.",
     "main": "main.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+        "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
     },
     "repository": {
         "type": "git",
@@ -16,5 +17,23 @@
     "bugs": {
         "url": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool/issues"
     },
-    "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme"
+    "homepage": "https://github.com/rklepov/rsschool-nodejs-2021Q4-cipher-tool#readme",
+    "devDependencies": {
+        "@types/jest": "^27.0.3",
+        "jest": "^27.3.1",
+        "@babel/plugin-transform-modules-commonjs": "^7.16.0"
+    },
+    "jest": {
+        "verbose": true,
+        "transform": {}
+    },
+    "babel": {
+        "env": {
+            "test": {
+                "plugins": [
+                    "@babel/plugin-transform-modules-commonjs"
+                ]
+            }
+        }
+    }
 }

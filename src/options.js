@@ -64,7 +64,7 @@ class Options {
 
     validate() {
         // --config option needs to be provided
-        if (!this.#config) {
+        if (null === this.#config) {
             throw new Except.MissingOption(["--config"]);
         }
 
@@ -79,15 +79,16 @@ class Options {
             throw new Except.MissingOptionValue(missingValues.map((nv) => nv.name));
         }
     }
+
     toString() {
         return `config: ${this.config}, input: ${this.input}, output: ${this.output}`;
     }
 
-    static printUsage(argv) {
-        console.error("Usage:");
-        console.error(
-            path.basename(process.argv[0]),
-            path.basename(process.argv[1]),
+    static printUsage(argv, print) {
+        print("Usage:");
+        print(
+            path.basename(argv[0]),
+            path.basename(argv[1]),
             '-c|--config "<config spec>"',
             "[ -i|--input <filename> ]",
             "[ -o|--output <filename> ]"
