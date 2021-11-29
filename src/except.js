@@ -72,14 +72,17 @@ class OutputFileError extends FileError {
 }
 
 export default {
+    CLIException,
     InvalidOption,
     DuplicateOption,
     MissingOption,
     MissingOptionValue,
 
+    CypherSpecException,
     UnknownCypher,
     IncorrectShiftSpec,
 
+    FileError,
     InputFileError,
     OutputFileError,
 };

@@ -70,7 +70,7 @@ class AtbashCypher extends Cypher {
         super();
     }
 
-    _translate(char, a, z, cnt) {
+    _translate(char, a, z) {
         let code = z.charCodeAt(0) - char.charCodeAt(0) + a.charCodeAt(0);
         return String.fromCharCode(code);
     }
