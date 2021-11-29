@@ -58,7 +58,7 @@ class Input extends Readable {
  */
 class Output extends Writable {
     constructor(filename) {
-        super({ decodeStrings: false, defaultEncoding: "utf8" }); // TODO: writes text in fixed encoding only
+        super({ decodeStrings: false }); // TODO: writes text in fixed encoding only
         this.filename = filename;
     }
 
@@ -66,7 +66,7 @@ class Output extends Writable {
         // according to the requirement the output file should exist
         //
         // TODO: change to async/await instead of nested callbacks
-        fs.stat(this.filename, (err, stat) => {
+        fs.stat(this.filename, (err) => {
             if (err) {
                 callback(new Except.OutputFileError(this.filename, err.message));
             } else {
@@ -83,11 +83,11 @@ class Output extends Writable {
     }
 
     _write(chunk, encoding, callback) {
-        fs.write(this.fd, chunk, (err, ...rest) => {
+        fs.write(this.fd, chunk, (err) => {
             if (err) {
                 callback(new Except.OutputFileError(this.filename, err.message));
             } else {
-                callback(null, ...rest);
+                callback(null);
             }
         });
     }

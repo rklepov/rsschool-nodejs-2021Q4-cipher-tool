@@ -1,7 +1,5 @@
 // options.test.js
 
-// import { jest } from "@jest/globals";
-
 import Options from "../src/options.js";
 import Except from "../src/except.js";
 
